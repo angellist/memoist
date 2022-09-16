@@ -59,7 +59,7 @@ module Memoist
   end
 
   def self.extract_reload!(method, args, kwargs)
-    if args.length == method.arity.abs + 1 && (args.last == true || args.last == :reload)
+    if ((args.length == method.arity.abs + 1) || method.arity == -1) && (args.last == true || args.last == :reload)
       reload = args.pop
     end
     reload
